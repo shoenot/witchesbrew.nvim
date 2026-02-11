@@ -3,9 +3,9 @@ local hsl = lush.hsl
 
 local palette = {
     -- background colors
-    base = hsl("#11080d"),
-    surface = hsl("#11080d").abs_lighten(10),
-    overlay = hsl("#11080d").abs_lighten(20),
+    base = hsl("#181015"),
+    surface = hsl("#181015").abs_lighten(10),
+    overlay = hsl("#181015").abs_lighten(20),
     -- foreground colors
     text = hsl("#e0ddd8"),  -- increased contrast for readability
     subtle = hsl("#d0cdc8"),

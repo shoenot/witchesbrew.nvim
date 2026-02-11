@@ -1,11 +1,10 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
-local palette = require("witchesbrew.palette")
-
-local theme = lush(function(injected_functions)
-  local sym = injected_functions.sym
-  return {
+local function theme(palette)
+  return lush(function(injected_functions)
+    local sym = injected_functions.sym
+    return {
     ColorColumn    { bg = palette.overlay }, -- Columns set with 'colorcolumn'
     Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor         { fg = palette.base, bg = palette.text }, -- Character under the cursor
