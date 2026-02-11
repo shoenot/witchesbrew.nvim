@@ -339,8 +339,9 @@ local function theme(palette)
     WhichKeySeparator        { fg = palette.muted },
     WhichKeyFloat            { NormalFloat },
     WhichKeyBorder           { FloatBorder },
-}
-end)
+    }
+  end)
+end
 
 -- Return our parsed theme for extension or use elsewhere.
 return theme

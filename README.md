@@ -27,13 +27,31 @@ With [Lazy](https://github.com/folke/lazy.nvim):
     "shoenot/witchesbrew.nvim",
     priority = 1000,
     config = function()
+        -- Default variant
         vim.cmd([[colorscheme witchesbrew]])
+        
+        -- Or use the bright variant
+        -- vim.cmd([[colorscheme witchesbrew-bright]])
     end,
 }
+```
+
+## Variants
+
+WitchesBrew comes with two variants:
+- **witchesbrew** - The default variant with a darker background (`#11080d`)
+- **witchesbrew-bright** - A slightly brighter variant with a lighter background (`#181015`)
+
+Simply use the variant name when setting your colorscheme:
+```vim
+" In Vim/Neovim
+colorscheme witchesbrew
+" or
+colorscheme witchesbrew-bright
 ```
 
 ## Build or Modify
 
 1. Ensure [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim) are installed
-2. Modify [lua/witchesbrew/theme.lua](lua/witchesbrew/theme.lua)
-3. Rebuild the colorscheme using `./build.sh`
+2. Modify [lua/witchesbrew/theme.lua](lua/witchesbrew/theme.lua) or the palette files
+3. Rebuild the colorscheme using `./build.sh` - this generates both variants
