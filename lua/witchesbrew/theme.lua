@@ -23,7 +23,7 @@ local theme = lush(function(injected_functions)
     EndOfBuffer    { fg = palette.hi_med }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     TermCursor     { gui = "reverse" }, -- Cursor in a focused terminal
     TermCursorNC   { gui = "reverse" }, -- Cursor in an unfocused terminal
-    ErrorMsg       { fg = palette.brightred }, -- Error messages on the command line
+    ErrorMsg       { fg = palette.error }, -- Error messages on the command line
     VertSplit      { fg = palette.hi_med }, -- Column separating vertically split windows
     Folded         { bg = palette.surface, fg = palette.text }, -- Line used for closed folds
     FoldColumn     { fg = palette.muted }, -- 'foldcolumn'
@@ -55,7 +55,7 @@ local theme = lush(function(injected_functions)
     PmenuExtraSel  { PmenuSel }, -- Popup menu: Selected item "extra text"
     PmenuSbar      { bg = palette.hi_low }, -- Popup menu: Scrollbar.
     PmenuThumb     { bg = palette.hi_med }, -- Popup menu: Thumb of the scrollbar.
-    Question       { fg = palette.brightyellow }, -- |hit-enter| prompt and yes/no questions
+    Question       { fg = palette.warning }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine   { fg = palette.brightblue }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search         { bg = palette.hi_med }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     SpecialKey     { fg = palette.green }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
@@ -71,7 +71,7 @@ local theme = lush(function(injected_functions)
     Title          { fg = palette.text }, -- Titles for output from ":set all", ":autocmd" etc.
     Visual         { bg = palette.hi_med }, -- Visual mode selection
     VisualNOS      { Visual }, -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg     { fg = palette.brightyellow }, -- Warning messages
+    WarningMsg     { fg = palette.warning }, -- Warning messages
     Whitespace     { NonText }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     Winseparator   { Normal }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     WildMenu       { IncSearch }, -- Current match in 'wildmenu' completion
@@ -88,10 +88,10 @@ local theme = lush(function(injected_functions)
 
     Comment        { fg = palette.muted, gui = "italic" }, -- Any comment
 
-    Constant       { fg = palette.blueshade1 }, -- (*) Any constant
+    Constant       { fg = palette.amber }, -- (*) Any constant
     String         { fg = palette.goldshade1 }, --   A string constant: "this is a string"
-    Character      { fg = palette.red }, --   A character constant: 'c', '\n'
-    Number         { Constant }, --   A number constant: 234, 0xff
+    Character      { fg = palette.amber }, --   A character constant: 'c', '\n'
+    Number         { fg = palette.amber }, --   A number constant: 234, 0xff
     Boolean        { Constant }, --   A boolean constant: TRUE, false
     Float          { Constant }, --   A floating point constant: 2.3e10
 
@@ -104,7 +104,7 @@ local theme = lush(function(injected_functions)
     Label          { Statement }, --   case, default, etc.
     Operator       { Statement }, --   "sizeof", "+", "*", etc.
     Keyword        { Statement }, --   any other keyword
-    Exception      { fg = palette.brightred }, --   try, catch, throw
+    Exception      { fg = palette.error }, --   try, catch, throw
 
     PreProc        { fg = palette.purple }, -- (*) Generic Preprocessor
     Include        { PreProc }, --   Preprocessor #include
@@ -112,7 +112,7 @@ local theme = lush(function(injected_functions)
     Macro          { PreProc }, --   Same as Define
     PreCondit      { PreProc }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = palette.pinkshade1 }, -- (*) int, long, char, etc.
+    Type           { fg = palette.wine }, -- (*) int, long, char, etc.
     StorageClass   { Type }, --   static, register, volatile, etc.
     Structure      { Type }, --   struct, union, enum, etc.
     Typedef        { Type }, --   A typedef
@@ -126,7 +126,7 @@ local theme = lush(function(injected_functions)
 
     Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     Ignore         { fg = palette.muted }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-    Error          { fg = palette.brightred }, -- Any erroneous construct
+    Error          { fg = palette.error }, -- Any erroneous construct
     Todo           { fg = palette.red }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
@@ -144,11 +144,11 @@ local theme = lush(function(injected_functions)
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
-    DiagnosticError            { fg = palette.brightred } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticWarn             { fg = palette.brightyellow } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticError            { fg = palette.error } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn             { fg = palette.warning } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticInfo             { fg = palette.blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticHint             { fg = palette.blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticOk               { fg = palette.green } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk               { fg = palette.success } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticVirtualTextError { DiagnosticError } , -- Used for "Error" diagnostic virtual text.
     DiagnosticVirtualTextWarn  { DiagnosticWarn } , -- Used for "Warn" diagnostic virtual text.
     DiagnosticVirtualTextInfo  { DiagnosticInfo } , -- Used for "Info" diagnostic virtual text.
@@ -190,7 +190,7 @@ local theme = lush(function(injected_functions)
     sym"@text.literal"      { Comment }, -- Comment
     sym"@text.reference"    { Identifier }, -- Identifier
     sym"@text.title"        { fg = palette.pink }, -- Title
-    sym"@text.uri"          { fg = palette.blueshade1 , gui = "underline" }, -- Underlined
+    sym"@text.uri"          { fg = palette.teal , gui = "underline" }, -- Underlined
     sym"@text.underline"    { gui = "underline" }, -- Underlined
     sym"@text.todo"         { fg = palette.brightgreen }, -- Todo
     sym"@comment"           { Comment }, -- Comment
@@ -223,7 +223,7 @@ local theme = lush(function(injected_functions)
     sym"@keyword"           { Keyword }, -- Keyword
     sym"@exception"         { Exception }, -- Exception
     sym"@variable"          { Identifier }, -- Identifier
-    sym"@type"              { fg = palette.red }, -- Type
+    sym"@type"              { Type }, -- Type
     sym"@type.definition"   { Typedef }, -- Typedef
     sym"@storageclass"      { StorageClass }, -- StorageClass
     sym"@structure"         { Structure }, -- Structure
