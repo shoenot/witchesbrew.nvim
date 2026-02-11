@@ -154,11 +154,11 @@ local theme = lush(function(injected_functions)
     DiagnosticVirtualTextInfo  { DiagnosticInfo } , -- Used for "Info" diagnostic virtual text.
     DiagnosticVirtualTextHint  { DiagnosticInfo } , -- Used for "Hint" diagnostic virtual text.
     DiagnosticVirtualTextOk    { DiagnosticOk } , -- Used for "Ok" diagnostic virtual text.
-    DiagnosticUnderlineError   { DiagnosticError } , -- Used to underline "Error" diagnostics.
-    DiagnosticUnderlineWarn    { DiagnosticWarn } , -- Used to underline "Warn" diagnostics.
-    DiagnosticUnderlineInfo    { DiagnosticInfo } , -- Used to underline "Info" diagnostics.
-    DiagnosticUnderlineHint    { DiagnosticInfo } , -- Used to underline "Hint" diagnostics.
-    DiagnosticUnderlineOk      { DiagnosticOk } , -- Used to underline "Ok" diagnostics.
+    DiagnosticUnderlineError   { gui = "undercurl", sp = palette.red } , -- Used to underline "Error" diagnostics.
+    DiagnosticUnderlineWarn    { gui = "undercurl", sp = palette.yellow } , -- Used to underline "Warn" diagnostics.
+    DiagnosticUnderlineInfo    { gui = "undercurl", sp = palette.blue } , -- Used to underline "Info" diagnostics.
+    DiagnosticUnderlineHint    { gui = "undercurl", sp = palette.blue } , -- Used to underline "Hint" diagnostics.
+    DiagnosticUnderlineOk      { gui = "undercurl", sp = palette.green } , -- Used to underline "Ok" diagnostics.
     DiagnosticFloatingError    { DiagnosticError } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     DiagnosticFloatingWarn     { DiagnosticWarn } , -- Used to color "Warn" diagnostic messages in diagnostics float.
     DiagnosticFloatingInfo     { DiagnosticInfo } , -- Used to color "Info" diagnostic messages in diagnostics float.
@@ -232,6 +232,114 @@ local theme = lush(function(injected_functions)
     sym"@preproc"           { PreProc }, -- PreProc
     sym"@debug"             { Debug }, -- Debug
     sym"@tag"               { Tag }, -- Tag
+
+    -- LSP Semantic Token Groups (Neovim 0.9+)
+    sym"@lsp.type.class"         { Type },
+    sym"@lsp.type.decorator"     { Function },
+    sym"@lsp.type.enum"          { Type },
+    sym"@lsp.type.enumMember"    { Constant },
+    sym"@lsp.type.function"      { Function },
+    sym"@lsp.type.interface"     { Type },
+    sym"@lsp.type.macro"         { Macro },
+    sym"@lsp.type.method"        { Function },
+    sym"@lsp.type.namespace"     { fg = palette.purple },
+    sym"@lsp.type.parameter"     { sym"@parameter" },
+    sym"@lsp.type.property"      { sym"@property" },
+    sym"@lsp.type.struct"        { Type },
+    sym"@lsp.type.type"          { Type },
+    sym"@lsp.type.typeParameter" { Type },
+    sym"@lsp.type.variable"      { Identifier },
+
+    -- Telescope
+    TelescopeNormal          { NormalFloat },
+    TelescopeBorder          { FloatBorder },
+    TelescopeTitle           { FloatTitle },
+    TelescopePromptPrefix    { fg = palette.pink },
+    TelescopeSelection       { bg = palette.hi_med, fg = palette.text },
+    TelescopeSelectionCaret  { fg = palette.pink },
+    TelescopeMatching        { fg = palette.brightpink, gui = "bold" },
+    TelescopePromptNormal    { bg = palette.surface },
+    TelescopePromptBorder    { bg = palette.surface, fg = palette.pink },
+    TelescopePromptTitle     { bg = palette.pink, fg = palette.base },
+    TelescopePreviewTitle    { bg = palette.purple, fg = palette.base },
+    TelescopeResultsTitle    { bg = palette.overlay, fg = palette.text },
+
+    -- nvim-cmp
+    CmpItemAbbrDeprecated    { fg = palette.muted, gui = "strikethrough" },
+    CmpItemAbbrMatch         { fg = palette.brightpink, gui = "bold" },
+    CmpItemAbbrMatchFuzzy    { fg = palette.pink },
+    CmpItemKindVariable      { fg = palette.text },
+    CmpItemKindInterface     { fg = palette.pinkshade1 },
+    CmpItemKindText          { fg = palette.text },
+    CmpItemKindFunction      { fg = palette.pinkshade3 },
+    CmpItemKindMethod        { fg = palette.pinkshade3 },
+    CmpItemKindKeyword       { fg = palette.pinkshade1 },
+    CmpItemKindProperty      { fg = palette.text },
+    CmpItemKindUnit          { fg = palette.red },
+    CmpItemKindSnippet       { fg = palette.goldshade1 },
+    CmpItemMenu              { fg = palette.subtle },
+
+    -- GitSigns
+    GitSignsAdd              { fg = palette.green },
+    GitSignsChange           { fg = palette.yellow },
+    GitSignsDelete           { fg = palette.red },
+    GitSignsAddInline        { bg = palette.diff_add },
+    GitSignsChangeInline     { bg = palette.diff_text },
+    GitSignsDeleteInline     { bg = palette.diff_del },
+
+    -- Neo-tree / nvim-tree
+    NeoTreeNormal            { bg = palette.base, fg = palette.text },
+    NeoTreeNormalNC          { NeoTreeNormal },
+    NeoTreeRootName          { fg = palette.pink, gui = "bold" },
+    NeoTreeDirectoryName     { Directory },
+    NeoTreeDirectoryIcon     { Directory },
+    NeoTreeFileIcon          { fg = palette.text },
+    NeoTreeFileName          { fg = palette.text },
+    NeoTreeFileNameOpened    { fg = palette.brightpink },
+    NeoTreeIndentMarker      { fg = palette.muted },
+    NeoTreeGitAdded          { GitSignsAdd },
+    NeoTreeGitModified       { GitSignsChange },
+    NeoTreeGitDeleted        { GitSignsDelete },
+    NvimTreeNormal           { NeoTreeNormal },
+    NvimTreeRootFolder       { NeoTreeRootName },
+    NvimTreeFolderName       { Directory },
+    NvimTreeFolderIcon       { Directory },
+    NvimTreeOpenedFolderName { fg = palette.brightpink },
+    NvimTreeIndentMarker     { NeoTreeIndentMarker },
+    NvimTreeGitNew           { GitSignsAdd },
+    NvimTreeGitDirty         { GitSignsChange },
+    NvimTreeGitDeleted       { GitSignsDelete },
+
+    -- Indent Blankline
+    IblIndent                { fg = palette.hi_low },
+    IblScope                 { fg = palette.hi_med },
+    IndentBlanklineChar      { IblIndent },
+    IndentBlanklineContextChar { IblScope },
+
+    -- Notify
+    NotifyERRORBorder        { fg = palette.red },
+    NotifyWARNBorder         { fg = palette.yellow },
+    NotifyINFOBorder         { fg = palette.blue },
+    NotifyDEBUGBorder        { fg = palette.subtle },
+    NotifyTRACEBorder        { fg = palette.purple },
+    NotifyERRORIcon          { fg = palette.red },
+    NotifyWARNIcon           { fg = palette.yellow },
+    NotifyINFOIcon           { fg = palette.blue },
+    NotifyDEBUGIcon          { fg = palette.subtle },
+    NotifyTRACEIcon          { fg = palette.purple },
+    NotifyERRORTitle         { fg = palette.red },
+    NotifyWARNTitle          { fg = palette.yellow },
+    NotifyINFOTitle          { fg = palette.blue },
+    NotifyDEBUGTitle         { fg = palette.subtle },
+    NotifyTRACETitle         { fg = palette.purple },
+
+    -- Which-key
+    WhichKey                 { fg = palette.brightpink },
+    WhichKeyGroup            { fg = palette.purple },
+    WhichKeyDesc             { fg = palette.text },
+    WhichKeySeparator        { fg = palette.muted },
+    WhichKeyFloat            { NormalFloat },
+    WhichKeyBorder           { FloatBorder },
 }
 end)
 
