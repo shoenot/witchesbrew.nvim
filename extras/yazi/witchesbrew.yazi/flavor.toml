@@ -1,0 +1,167 @@
+# Witchesbrew Bright — yazi flavor
+# https://github.com/shurjo/witchesbrew.nvim
+#
+# Palette reference:
+# base         #181015
+# surface      #2a2530
+# overlay      #433c48
+# text         #e0ddd8
+# subtle       #d0cdc8
+# faint        #b8b5b0
+# muted        #7a7872
+# pink         #a68295
+# red          #da9188
+# green        #94a681
+# yellow       #a69481
+# blue         #8194a6
+# purple       #866399
+# teal         #88b5aa
+# amber        #d9956f
+# wine         #8b5a6b
+# brightpink   #de96b3
+# brightred    #f2a195
+# brightgreen  #aecc8c
+# brightyellow #d5af8e
+# brightblue   #95b4d3
+# brightpurple #a16bc0
+# hi_low       #2e2920
+# hi_med       #524a3c
+# hi_high      #665e4f
+# error        #c85d5d
+# warning      #d9a95f
+# success      #8eb574
+
+[mgr]
+cwd = { fg = "#d5af8e" }
+
+find_keyword  = { fg = "#d9956f", bg = "#181015" }
+find_position = {}
+
+marker_copied   = { fg = "#94a681", bg = "#94a681" }
+marker_cut      = { fg = "#da9188", bg = "#da9188" }
+marker_marked   = { fg = "#866399", bg = "#866399" }
+marker_selected = { fg = "#d9956f", bg = "#d9956f" }
+
+count_copied   = { fg = "#181015", bg = "#94a681" }
+count_cut      = { fg = "#181015", bg = "#da9188" }
+count_selected = { fg = "#181015", bg = "#d9956f" }
+
+border_symbol = "│"
+border_style  = { fg = "#e0ddd8" }
+
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { reversed = true }
+
+[tabs]
+active   = { fg = "#181015", bg = "#a68295" }
+inactive = { fg = "#a68295", bg = "#2a2530" }
+
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#181015", bg = "#a68295" }
+normal_alt  = { fg = "#a68295", bg = "#2a2530" }
+select_main = { fg = "#181015", bg = "#866399" }
+select_alt  = { fg = "#866399", bg = "#2a2530" }
+unset_main  = { fg = "#181015", bg = "#d5af8e" }
+unset_alt   = { fg = "#d5af8e", bg = "#2a2530" }
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+overall   = { fg = "#d0cdc8", bg = "#181015" }
+
+progress_label  = { fg = "#a68295", bold = true }
+progress_normal = { fg = "#2a2530", bg = "#181015" }
+progress_error  = { fg = "#2a2530", bg = "#181015" }
+
+perm_type  = { fg = "#94a681" }
+perm_read  = { fg = "#d5af8e" }
+perm_write = { fg = "#da9188" }
+perm_exec  = { fg = "#88b5aa" }
+perm_sep   = { fg = "#866399" }
+
+[pick]
+border   = { fg = "#de96b3" }
+active   = { fg = "#866399", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#de96b3" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+[cmp]
+border   = { fg = "#de96b3" }
+active   = { reversed = true }
+inactive = {}
+
+[confirm]
+border     = { fg = "#de96b3" }
+title      = { fg = "#de96b3" }
+body       = { fg = "#b8b5b0" }
+list       = { fg = "#e0ddd8" }
+btn_yes    = { fg = "#181015", bg = "#a68295", bold = true }
+btn_no     = { fg = "#7a7872" }
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+[tasks]
+border  = { fg = "#de96b3" }
+title   = {}
+hovered = { fg = "#866399" }
+
+[which]
+cols            = 2
+separator       = " ─ "
+separator_style = { fg = "#524a3c" }
+mask            = { bg = "#181015" }
+rest            = { fg = "#524a3c" }
+cand            = { fg = "#a68295" }
+desc            = { fg = "#433c48" }
+
+[help]
+on      = { fg = "#88b5aa" }
+run     = { fg = "#866399" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#181015", bg = "#e0ddd8" }
+
+[spot]
+border   = { fg = "#de96b3" }
+title    = { fg = "#de96b3", bold = true }
+tbl_col  = { fg = "#88b5aa" }
+tbl_cell = { fg = "#de96b3", reversed = true }
+
+[notify]
+title_info  = { fg = "#94a681" }
+title_warn  = { fg = "#d9a95f" }
+title_error = { fg = "#da9188" }
+
+[filetype]
+rules = [
+    # images
+    { mime = "image/*", fg = "#d5af8e" },
+
+    # media
+    { mime = "{audio,video}/*", fg = "#866399" },
+
+    # archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#da9188" },
+
+    # documents
+    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#88b5aa" },
+
+    # broken links
+    { url = "*", is = "orphan", fg = "#c85d5d" },
+
+    # executables
+    { url = "*", is = "exec", fg = "#8eb574" },
+
+    # fallback
+    { url = "*", fg = "#e0ddd8" },
+    { url = "*/", fg = "#a68295" },
+]
