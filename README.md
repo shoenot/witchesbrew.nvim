@@ -27,6 +27,8 @@ With [Lazy](https://github.com/folke/lazy.nvim):
     "shoenot/witchesbrew.nvim",
     priority = 1000,
     config = function()
+        -- Set transparency setting. Defaults to false.
+        require("witchesbrew").setup({ transparent = true })
         -- Default variant
         vim.cmd([[colorscheme witchesbrew]])
         
